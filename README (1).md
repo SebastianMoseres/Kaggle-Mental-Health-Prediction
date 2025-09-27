@@ -4,7 +4,7 @@
 
 This project uses a synthetic dataset from a [Kaggle Playground Series competition (S4E11)](https://www.kaggle.com/competitions/playground-series-s4e11) to build a machine learning model that predicts the likelihood of depression based on survey responses.
 
-The project demonstrates a complete end-to-end data science workflow, from initial data exploration and cleaning to model training, evaluation, and final prediction. A Keras Neural Network was found to be the best-performing model with a validation accuracy of **94.64%**.
+The project demonstrates a complete end-to-end data science workflow, from initial data exploration and cleaning to model training, evaluation, and final prediction. After comparing multiple models, **LightGBM** was selected as the final model due to its high performance and stability, achieving a validation accuracy of **93.88%**.
 
 ---
 
@@ -26,21 +26,22 @@ The project demonstrates a complete end-to-end data science workflow, from initi
     *   All models were evaluated using the accuracy metric.
 
 4.  **Model Selection & Final Prediction:**
-    *   The Neural Network achieved the highest validation accuracy and was selected as the final model.
-    *   The model was then trained on the full dataset and used to generate predictions on the official competition test set.
+    *   The **LightGBM** model was selected as the final model. While the Neural Network showed high performance in one run, subsequent runs revealed high variability in its scores. 
+    *   LightGBM provided a consistently high and reproducible accuracy, making it the more reliable choice for the final prediction.
+    *   The model was then re-trained on the full dataset to generate predictions for the official competition test set.
 
 ---
 
 ## Results
 
-The models' performance on the validation set was as follows:
+The models' performance on the validation set was as follows. LightGBM was chosen for its high and consistent accuracy.
 
-| Model               | Validation Accuracy |
-| ------------------- | ------------------- |
-| **Neural Network**  | **0.9464**          |
-| LightGBM            | 0.9388              |
-| Logistic Regression | 0.9380              |
-| Random Forest       | 0.9341              |
+| Model               | Validation Accuracy | Notes                               |
+| ------------------- | ------------------- | ----------------------------------- |
+| **LightGBM**        | **0.9388**          | **Chosen Model (Stable & High Perf.)** |
+| Logistic Regression | 0.9380              | Strong Baseline                     |
+| Random Forest       | 0.9341              |                                     |
+| Keras Neural Network| ~0.934-0.946        | High variability between runs       |
 
 ---
 
@@ -48,7 +49,7 @@ The models' performance on the validation set was as follows:
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+    git clone https://github.com/SebastianMoseres/Kaggle-Mental-Health-Prediction.git
     ```
 2.  Install the required dependencies:
     ```bash
